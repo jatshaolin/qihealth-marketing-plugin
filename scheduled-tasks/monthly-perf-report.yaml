@@ -1,0 +1,26 @@
+# Scheduled task: Monthly Performance Report
+# Día 1 de cada mes 6:00 AM — reporte ejecutivo mensual
+
+name: qihealth-monthly-perf-report
+description: |
+  Día 1 de cada mes 6:00 AM hora México.
+  Genera reporte ejecutivo mensual con métricas + reasignación
+  sugerida de budget + decisiones estratégicas para Jose.
+
+schedule:
+  cron: "0 6 1 * *"  # Día 1 cada mes a las 6 AM
+  timezone: "America/Mexico_City"
+
+action:
+  type: invoke_skill
+  skill: monthly-performance-report
+
+output_targets:
+  - type: email
+    recipient: "jat@qihealth.ai"
+    subject: "QiHealth Marketing — Monthly Report [Mes]"
+  - type: slack
+    channel: "#qihealth-marketing-daily"
+
+active: true
+created: "2026-05-09"

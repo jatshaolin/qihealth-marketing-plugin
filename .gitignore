@@ -1,0 +1,58 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp files
+*.tmp
+*.bak
+/tmp/
+
+# Runtime data del plugin (genere en uso)
+runtime/
+*.runtime.md
+
+# Confidencial — datos reales de operación
+# Los archivos memory/ SÍ se versionan (son templates compartidos),
+# pero NO logs runtime ni data específica de leads
+memory/runtime-*.md
+memory/private-*.md
+
+# Build artifacts
+*.plugin
+*.zip
+
+# Secrets — nunca commit
+.env
+.env.local
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# Node modules (si en algún momento se agregan scripts)
+node_modules/
+
+# Python (si se agregan scripts)
+__pycache__/
+*.pyc
+venv/
+
+# Otros
+.cache/
+.tmp/

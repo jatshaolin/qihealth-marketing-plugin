@@ -1,0 +1,33 @@
+# Scheduled task: SEO Rank Tracking
+# Lunes 8:00 AM — tracking semanal de rankings
+
+name: qihealth-seo-rank-tracking
+description: |
+  Lunes 8:00 AM hora México. Pull de Search Console + Ahrefs
+  para detectar cambios en rankings de keywords target.
+  Reporta diffs y oportunidades de optimización.
+
+schedule:
+  cron: "0 8 * * 1"  # Lunes 8:00 AM
+  timezone: "America/Mexico_City"
+
+action:
+  type: invoke_skill
+  skill: seo-internal-linking  # invocar via seo-monthly-report as default
+  # Actually invokes a combination of seo-monthly-report + ranking diff analysis
+
+output_targets:
+  - type: slack
+    channel: "#qihealth-seo-updates"
+
+dependencies:
+  - mcp: ahrefs (cuando esté conectado)
+  - mcp: supermetrics (para Search Console)
+
+failure_handling:
+  retry_count: 2
+  retry_delay_minutes: 30
+  fallback_action: log_only
+
+active: true
+created: "2026-05-09"

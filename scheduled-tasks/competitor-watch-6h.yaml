@@ -1,0 +1,48 @@
+# Scheduled task: Competitor Watch
+# Configurar via Cowork scheduled-tasks MCP al instalar el plugin
+
+name: qihealth-competitor-watch
+description: |
+  Scrapeo de Abbott + Sibionics cada 6 horas.
+  Detecta nuevos ads en Meta Ad Library, cambios de precio en sitios oficiales,
+  cambios en marketplaces (Mercado Libre, Amazon MX para Sibionics).
+  Reporta a Slack #qihealth-competitor-alerts solo si hay cambios detectados.
+
+schedule:
+  cron: "0 */6 * * *"  # Cada 6 horas
+  timezone: "America/Mexico_City"
+
+action:
+  type: invoke_skill
+  skill: competitor-watch
+  arguments:
+    competitors: ["abbott", "sibionics"]
+    silent_if_no_changes: true
+    severity_threshold: "medium"  # Solo reportar si severity >= medium
+
+output_targets:
+  - type: slack
+    channel: "#qihealth-competitor-alerts"
+    only_if_changes_detected: true
+
+dependencies:
+  - mcp: apify
+    purpose: "Meta Ad Library scrape + sitios competidores + marketplaces"
+  - skill: competitor-watch
+  - skill: slack-notifier
+
+failure_handling:
+  retry_count: 3
+  retry_delay_minutes: 10
+  fallback_action: log_only
+  notes: |
+    Si Apify scrape falla, no notificar (evitar spam).
+    Si falla 4 veces seguidas (24h sin data), notificar a Jose.
+
+active: true
+created: "2026-05-09"
+last_modified: "2026-05-09"
+notes: |
+  - Para que funcione activo, requiere conexión Apify MCP
+  - Mientras Apify no esté conectado, este scheduled task queda en stub
+  - Cadencia 6h = 4 scans/día. Suficiente para detectar cambios significativos sin saturar

@@ -1,0 +1,25 @@
+# Scheduled task: Weekly Prep Friday
+# Prepara material para review semanal de viernes 4 PM
+
+name: qihealth-weekly-prep-friday
+description: |
+  Viernes 2:00 PM hora México. Genera reporte semanal completo
+  con performance + winners/losers + decisiones para discutir
+  en la reunión de 4 PM.
+
+schedule:
+  cron: "0 14 * * 5"  # Viernes 2:00 PM
+  timezone: "America/Mexico_City"
+
+action:
+  type: invoke_skill
+  skill: weekly-performance-report
+
+output_targets:
+  - type: slack
+    channel: "#qihealth-marketing-daily"
+  - type: notion
+    database: "Weekly Reports"
+
+active: true
+created: "2026-05-09"

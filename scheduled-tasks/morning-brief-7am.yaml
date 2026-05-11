@@ -1,0 +1,45 @@
+# Scheduled task: Morning Brief
+# Configurar via Cowork scheduled-tasks MCP al instalar el plugin
+
+name: qihealth-morning-brief
+description: |
+  Genera el morning brief diario de QiHealth marketing.
+  Lun-Vie 7:00 AM hora de México.
+  Output a Slack #qihealth-marketing-daily + email a Jose.
+
+schedule:
+  cron: "0 7 * * 1-5"  # Lunes a Viernes 7:00 AM
+  timezone: "America/Mexico_City"
+
+action:
+  type: invoke_skill
+  skill: morning-brief-generator
+  arguments:
+    detailed: false
+    include_competitor_alerts: true
+    include_pipeline_status: true
+
+output_targets:
+  - type: slack
+    channel: "#qihealth-marketing-daily"
+  - type: email
+    recipient: "jat@qihealth.ai"
+    subject: "QiHealth Morning Brief — {date}"
+
+failure_handling:
+  retry_count: 2
+  retry_delay_minutes: 15
+  fallback_action: notify_slack
+  fallback_target: "#qihealth-marketing-daily"
+  fallback_message: |
+    ⚠️ Morning brief failed to generate.
+    Check `ad-performance-monitor` and other dependent MCPs.
+    Run /qihealth-morning-brief manually.
+
+active: true
+created: "2026-05-09"
+last_modified: "2026-05-09"
+notes: |
+  - El brief es la unidad operativa más importante del sistema
+  - Si falla 3 días seguidos, escalar a setup review
+  - Cadencia puede ajustarse si Jose prefiere otro horario

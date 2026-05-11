@@ -1,0 +1,29 @@
+{
+  "name": "qihealth-marketing",
+  "version": "0.2.0",
+  "description": "Sistema de marketing agéntico completo para QiHealth. Reemplaza agencia tradicional con orquestador + 6 personas (5 sub-segmentos + SEO transversal) operando bajo Estrategia de Contenido v4.3. Incluye 51 skills cubriendo producción orgánica (TikTok+IG), paid (Meta+TikTok), SEO + LLM SEO (AEO/GEO), iteración de anuncios con feedback loop, outreach a médicos con Apollo, hand-off comercial a Luis, quality gates COFEPRIS obligatorios, competitor watch (Abbott + Sibionics), morning brief automático, y memoria pre-cargada con estrategia v4.3.",
+  "author": {
+    "name": "QiHealth",
+    "email": "jat@qihealth.ai"
+  },
+  "keywords": [
+    "qihealth",
+    "marketing",
+    "healthtech",
+    "cofepris",
+    "cgm",
+    "agentic",
+    "internal",
+    "seo",
+    "paid-media",
+    "outreach"
+  ],
+  "license": "Proprietary",
+  "metadata": {
+    "skills_count": 51,
+    "scheduled_tasks_count": 5,
+    "memory_files_count": 9,
+    "governance_level": "Level 1 (read + recommend)",
+    "fase": "MVP + Fase 1 completo"
+  }
+}
