@@ -56,6 +56,51 @@ Genera reporte mensual de performance SEO. Combina Search Console + GA4 + Ahrefs
 1. "QiTrax México opiniones" — posición 28 (cayó de 15)
 2. ...
 
+## 🏆 Page 2 Goldmine (sección crítica — fastest wins)
+
+Este es el corazón del reporte. Identifica keywords donde QiHealth rankea entre posiciones 11-20 con **al menos 100 impressions/mes**. Estos son los quick wins más altos del SEO — una optimización pequeña puede mover esos keywords a top 10 y multiplicar tráfico.
+
+**Filtros aplicados**:
+- Posición actual: 11-20 (página 2 de Google)
+- Impressions mensuales: >100 (validar demanda real)
+- Idealmente con click-through también pero impressions es el filtro mínimo
+
+### Page 2 Goldmine este mes
+
+| Keyword | Posición actual | Impressions/mes | Página que rankea | Acción específica para subir a top 10 |
+|---|---|---|---|---|
+| "qué es CGM México" | 14 | 480 | /blog/que-es-cgm | Optimizar title tag (agregar "México" al inicio), H1, primeros 100 palabras |
+| "FreeStyle Libre alternativas" | 18 | 320 | /switch | Expandir content sobre alternativas, agregar tabla comparativa schema FAQPage |
+| "diabetes hereditaria síntomas" | 12 | 280 | /pillar/diabetes-hereditaria | Agregar internal linking desde Legacy satélites + actualizar autor con cédula |
+| ... | ... | ... | ... | ... |
+
+### Per keyword detallado (para top 10 del goldmine)
+
+Por cada keyword en page 2 goldmine, el reporte incluye:
+
+- **Title tag actual**: "[texto]"
+- **¿Contiene keyword?**: Sí/No
+- **Posición de keyword en title**: 1er, 2do, etc.
+- **H1 actual**: "[texto]"
+- **¿Contiene keyword en H1?**: Sí/No
+- **¿Está en primeros 100 palabras del body?**: Sí/No
+- **Word count de la página**: N palabras
+- **Internal links hacia la página**: N (de qué páginas)
+- **Meta description actual**: "[texto]"
+- **CTR actual**: X%
+- **Diagnóstico**: razón principal por la que NO está en top 10
+
+### Sprint de optimización Page 2 — propuesta 30 días
+
+| Semana | Acción | Output esperado |
+|---|---|---|
+| Sem 1 | Title tag + H1 fixes para top 10 keywords del goldmine | 3-5 keywords suben a top 10 en 14-21 días |
+| Sem 2 | Content additions para pages <500 palabras | Aumenta authority signal de pages |
+| Sem 3 | Internal linking fixes — qué pages deben linkear a qué | Distribución de authority a goldmine pages |
+| Sem 4 | Meta description rewrites para pages con high impressions/low CTR | Sube CTR sin tocar position |
+
+**Importante**: para cada fix, el reporte NO solo dice qué hacer — incluye **el copy literal** que el editor/developer debe pegar (no instrucciones genéricas, copy exacto).
+
 ## Pages performance
 
 - **Top pages by traffic**: ...
