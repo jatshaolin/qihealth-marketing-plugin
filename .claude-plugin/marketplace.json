@@ -1,0 +1,13 @@
+{
+  "name": "qihealth-marketplace",
+  "owner": {
+    "name": "QiHealth"
+  },
+  "plugins": [
+    {
+      "name": "qihealth-marketing",
+      "source": "./qihealth-marketing",
+      "description": "Sistema de marketing agentico para QiHealth. 51 habilidades cubriendo 5 sub-segmentos (CGM-Switchers, BGM-Self, BGM-Doctor, No-Measurers, Legacy) + SEO transversal + iteracion de ads + outreach medico."
+    }
+  ]
+}
