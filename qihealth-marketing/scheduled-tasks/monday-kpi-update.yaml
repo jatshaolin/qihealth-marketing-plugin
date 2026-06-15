@@ -1,0 +1,36 @@
+# Scheduled task: Monday KPI Update
+# Actualiza el Google Sheet de KPIs de ventas cada lunes con datos Shopify de la semana anterior (L-D)
+
+name: qihealth-monday-kpi-update
+description: |
+  Lunes 8:00 AM hora México. Consulta Shopify MCP con los datos de ventas
+  de la semana anterior (lunes a domingo) y actualiza el Google Sheet de KPIs
+  en Drive automáticamente.
+
+schedule:
+  cron: "0 8 * * 1"  # Lunes 8:00 AM
+  timezone: "America/Mexico_City"
+
+action:
+  type: invoke_skill
+  skill: kpi-ventas-updater
+
+context:
+  drive_folder_id: "1Xwi1lr92w_Zx-Lbv2aGV1R4_5Ti9l9SC"
+  sheet_name: "QiHealth_KPIs_Ventas_2026_v2"
+  data_source: "shopify_mcp"
+  week_cutoff: "sunday"  # La semana va de lunes a domingo
+
+output_targets:
+  - type: slack
+    channel: "#qihealth-marketing-daily"
+    message_template: |
+      📊 *KPIs Ventas — Semana {week_start} al {week_end}*
+      Actualizados en Google Drive. Ver sheet para detalle completo.
+  - type: google_drive
+    folder_id: "1Xwi1lr92w_Zx-Lbv2aGV1R4_5Ti9l9SC"
+    file_name: "QiHealth_KPIs_Ventas_2026_v2"
+
+active: true
+created: "2026-06-15"
+owner: "jat@qihealth.ai"
