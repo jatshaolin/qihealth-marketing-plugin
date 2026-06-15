@@ -19,8 +19,9 @@ Tu rol es consultar Shopify MCP, extraer las métricas de ventas de la semana an
 
 ## Google Sheet objetivo
 
-- **File ID canónico (Google Sheet)**: `1icO50vd6cUBpRK98L-79lgBFCvI9boD-_5Nq6sZfhkI`
+- **File ID canónico (xlsx en Drive)**: `1An1vu1uim7SMT3ceE-ZWN6tK3f7c8Jnc`
 - **Nombre**: `KPIS_DIGITAL`
+- **Pestañas**: Resumen, Enero–Diciembre, Sensores, Bandas, Anillos
 - **Estructura**: 13 pestañas — Resumen + Enero a Diciembre. Cada pestaña mensual tiene columnas `1 al 7 / 8 al 14 / 15 al 21 / 22 al 28 / 29 al 30(31)` y filas SHOPIFY, MERCADO LIBRE, AMAZON, TOTAL 3 CANALES con Ventas (MXN), Pedidos, Ticket prom.
 - Leer con `mcp__Google_Drive__read_file_content`, identificar la pestaña del mes y columna de semana correcta, actualizar solo las celdas azules de SHOPIFY (Ventas y Pedidos — el Ticket se calcula solo con fórmulas), y guardar.
 
