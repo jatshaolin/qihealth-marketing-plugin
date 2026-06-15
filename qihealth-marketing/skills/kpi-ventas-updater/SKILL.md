@@ -20,9 +20,10 @@ Tu rol es consultar Shopify MCP, extraer las métricas de ventas de la semana an
 ## Google Sheet objetivo
 
 - **Drive Folder ID**: `1Xwi1lr92w_Zx-Lbv2aGV1R4_5Ti9l9SC`
-- **File ID del Sheet**: `1bu_UM_lwQ8kci2yC5SSz7eF3nIgKyKXAfJSVhL5WN5o`
-- **Nombre del archivo**: `QiHealth_KPIs_Ventas_2026_v2` (Google Sheets)
-- Usar el file ID directamente. Si falla, buscar con `mcp__Google_Drive__search_files`.
+- **File ID del Excel original**: `1OskfKy2_sSOelAUzSD5mXsfDFS8WspLg` (287 KB, .xlsx completo)
+- **Nombre del archivo**: `QiHealth_KPIs_Ventas_2026_v2.xlsx`
+- Para actualizar, leer el sheet con `mcp__Google_Drive__read_file_content`, modificar los datos de la semana correspondiente, y re-subir con `mcp__Google_Drive__create_file` en la misma carpeta (o actualizar celdas si hay MCP de Sheets disponible).
+- Buscar con `mcp__Google_Drive__search_files` si el file ID falla.
 
 ## Mandatory loading
 
