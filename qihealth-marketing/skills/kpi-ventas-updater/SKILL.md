@@ -19,9 +19,10 @@ Tu rol es consultar Shopify MCP, extraer las métricas de ventas de la semana an
 
 ## Google Sheet objetivo
 
-- **File ID canónico (Google Sheet)**: `1XYJ0b9irSk1BmE5iToIYWeVaPlfh00PDFoGT6e1LWH0`
+- **File ID canónico (Google Sheet)**: `1SxbCXvXwB1SVZszEksIRXe02-CBIRkFTGNjCmQ2CKCE`
 - **Nombre**: `KPIs_Ventas_QiHealth_ACTIVO`
-- Leer con `mcp__Google_Drive__read_file_content`, agregar la fila nueva, y re-subir con `mcp__Google_Drive__create_file` (mismo parentId, mismo title, contenido CSV actualizado).
+- **Estructura**: Un sheet con secciones por mes (ENERO–DICIEMBRE), columnas = rangos de días (1-7, 8-14, 15-21, 22-28, 29-31), filas = SHOPIFY / MERCADO LIBRE / AMAZON / TOTAL 3 CANALES con Ventas, Pedidos, Ticket prom.
+- Leer con `mcp__Google_Drive__read_file_content`, localizar la sección del mes y columna de semana correcta, actualizar solo las celdas de SHOPIFY, y re-subir con `mcp__Google_Drive__create_file` (mismo parentId, mismo title, contenido CSV completo actualizado).
 
 ## Mandatory loading
 
@@ -64,23 +65,22 @@ FROM sessions SHOW sessions, online_store_visitors, sessions_that_completed_chec
 
 Usar `mcp__Google_Drive__read_file_content` con el file ID del sheet para entender la estructura actual (columnas, filas existentes, semana donde insertar).
 
-### 4. Mapeo de métricas Shopify → columnas del Sheet
+### 4. Mapeo de métricas Shopify → estructura del Sheet
 
-| Métrica Shopify | Columna esperada en sheet |
+**Estructura del sheet:**
+- Columnas de semana: `1 al 7`, `8 al 14`, `15 al 21`, `22 al 28`, `29 al 31`
+- Cada semana del lunes anterior mapea a la columna según los días del mes que cubre.
+  - Ejemplo: semana 8–14 jun → columna `8 al 14` en sección `JUNIO 2026`
+
+**Filas a actualizar (solo SHOPIFY):**
+| Métrica Shopify | Fila en sheet |
 |---|---|
-| orders | Pedidos / Orders |
-| gross_sales | Ventas Brutas |
-| discounts | Descuentos |
-| returns | Devoluciones |
-| net_sales | Ventas Netas |
-| total_sales | Total Ventas (con IVA/envío) |
-| average_order_value | Ticket Promedio / AOV |
-| customers | Clientes Únicos |
-| returning_customer_rate | % Clientes Recurrentes |
-| conversion_rate | Tasa de Conversión |
-| sessions | Sesiones |
+| net_sales | SHOPIFY > Ventas (MXN) |
+| orders | SHOPIFY > Pedidos |
+| average_order_value | SHOPIFY > Ticket prom. |
 
-Adaptar nombres según las columnas reales del sheet que encuentres en el paso 3.
+- El TOTAL MES y PROM. SEMANA se recalculan sumando las columnas de semanas.
+- NO tocar filas de MERCADO LIBRE ni AMAZON (esas las captura el equipo manualmente).
 
 ### 5. Actualizar el Google Sheet
 
